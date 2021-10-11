@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+- DefaultPool
 
 variables:
 
@@ -18,7 +18,7 @@ variables:
   environmentName: 'uniquewebappnameLam'
 
   # Agent VM image name
-  agent: DESKTOP-PJ6QB08
+  vmImageName: 'ubuntu-latest'
 
 stages:
 - stage: Build
@@ -27,7 +27,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      agent: DESKTOP-PJ6QB08
+      vmImage: $(vmImageName)
 
     steps:
     - task: NodeTool@0
@@ -62,7 +62,7 @@ stages:
     displayName: Deploy
     environment: $(environmentName)
     pool:
-      agent: DESKTOP-PJ6QB08
+      vmImage: $(vmImageName)
     strategy:
       runOnce:
         deploy:
