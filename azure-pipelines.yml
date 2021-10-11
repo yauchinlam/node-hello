@@ -18,7 +18,8 @@ variables:
   environmentName: 'uniquewebappnameLam'
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  pool:
+    agent: Default
 
 stages:
 - stage: Build
@@ -27,7 +28,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      agent: $(agent)
+      #vmImage: $(vmImageName)
 
     steps:
     - task: NodeTool@0
@@ -62,7 +64,8 @@ stages:
     displayName: Deploy
     environment: $(environmentName)
     pool:
-      vmImage: $(vmImageName)
+      #vmImage: $(vmImageName)
+      agent: $(agent)
     strategy:
       runOnce:
         deploy:
