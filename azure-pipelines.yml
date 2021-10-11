@@ -18,8 +18,7 @@ variables:
   environmentName: 'uniquewebappnameLam'
 
   # Agent VM image name
-  pool:
-    agent: 'DESKTOP-PJ6QB08'
+  pool: 'DESKTOP-PJ6QB08'
 
 stages:
 - stage: Build
@@ -27,8 +26,7 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      agent: $(agent)
+    pool: $(pool)
       #vmImage: $(vmImageName)
 
     steps:
@@ -63,9 +61,9 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     environment: $(environmentName)
-    pool:
+    pool: $(pool)
       #vmImage: $(vmImageName)
-      agent: $(agent)
+      #agent: $(agent)
     strategy:
       runOnce:
         deploy:
