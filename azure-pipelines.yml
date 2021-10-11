@@ -18,7 +18,7 @@ variables:
   environmentName: 'uniquewebappnameLam'
 
   # Agent VM image name
-  pool: 'DESKTOP-PJ6QB08'
+  pool: 'Default'
 
 stages:
 - stage: Build
