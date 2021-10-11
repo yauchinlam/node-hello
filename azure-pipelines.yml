@@ -18,7 +18,7 @@ variables:
   environmentName: 'uniquewebappnameLam'
 
   # Agent VM image name
-  agent: Default
+  agent: DESKTOP-PJ6QB08
 
 stages:
 - stage: Build
@@ -27,7 +27,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      agent: Default
+      agent: DESKTOP-PJ6QB08
 
     steps:
     - task: NodeTool@0
@@ -62,7 +62,7 @@ stages:
     displayName: Deploy
     environment: $(environmentName)
     pool:
-      agent: Default
+      agent: DESKTOP-PJ6QB08
     strategy:
       runOnce:
         deploy:
